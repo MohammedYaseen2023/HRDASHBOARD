@@ -4,6 +4,7 @@ import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import SingleDate from './api'
+import Date1 from './api'
 
 const data = [
   { id: 0, value: 40, label: 'الحضور' },
@@ -39,14 +40,15 @@ export function PieActiveArc() {
 }
 
  
-
+alert(Date1())
 function App() {
 
 
   return (  
       <div >
        
-       <SingleDate/>
+       {/* <SingleDate/> */}
+        {Date1()}  
        <Box sx={{ pt: 2 }} />
        <PieActiveArc/>
       </div>
