@@ -3,6 +3,7 @@ import * as React from 'react';
 import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import SingleDate from './api'
 
 const data = [
   { id: 0, value: 40, label: 'الحضور' },
@@ -42,12 +43,13 @@ export function PieActiveArc() {
 function App() {
 
 
-  return (
-    <div >
-      <Box sx={{fontWeight: 'bold', fontSize: '25px', textAlign: 'center',color: 'secondary.main'}} > كشف الحضور والانصراف ليوم 30/10/2023</Box>
-     <Box sx={{ pt: 2 }} />
-      <PieActiveArc/>
-    </div>
+  return (  
+      <div >
+       
+       <SingleDate/>
+       <Box sx={{ pt: 2 }} />
+       <PieActiveArc/>
+      </div>
   )
 }
 
