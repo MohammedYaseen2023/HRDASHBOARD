@@ -1,10 +1,31 @@
 
-import * as React from 'react';
+// import * as React from 'react';
 import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import SingleDate from './api'
-import Date1 from './api'
+import  Date1 from './api'
+
+import React, { useState } from 'react';
+ 
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS file
+
+
+const From_D = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  return (
+    <div>
+      <DatePicker
+        selected={selectedDate}
+        onChange={(date) => setSelectedDate(date)}
+      />
+    </div>
+  );
+};
+
+
 
 const data = [
   { id: 0, value: 40, label: 'الحضور' },
@@ -40,17 +61,23 @@ export function PieActiveArc() {
 }
 
  
-alert(Date1())
+ 
 function App() {
 
 
   return (  
       <div >
-       
+        <From_D/>
+        <br></br>
+       <Box sx={{fontWeight: 'bold', fontSize: '25px', textAlign: 'center',color: 'secondary.main'}} >
+           كشف الحضور والانصراف ليوم {Date1()} </Box>
        {/* <SingleDate/> */}
-        {Date1()}  
+         
        <Box sx={{ pt: 2 }} />
        <PieActiveArc/>
+       
+       
+        
       </div>
   )
 }
