@@ -1,6 +1,4 @@
-
-function alertfunc(){
-    return(
-alert(123));}
-
+function alertfunc() {
+  return null;
+}
 export default alertfunc;

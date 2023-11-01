@@ -1,6 +1,6 @@
 import { useState } from "react";
 import MiniDrawer from "./sidebar";
-import AlertFunc from "./R_Status";
+import R_Status from "./R_Status";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div>
-        <AlertFunc />
+        <R_Status />
         <MiniDrawer />
       </div>
     </>
