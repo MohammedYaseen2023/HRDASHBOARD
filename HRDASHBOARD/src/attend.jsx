@@ -14,7 +14,7 @@ import { avatarClasses } from '@mui/material';
 
 
 
-var From_D=new Date();
+let From_D=new Date();
 
 export function DateFrom() {
   const [date, setDate] = useState(new Date());
@@ -67,11 +67,6 @@ export function PieActiveArc() {
     />
   );
 }
-
-export function aaa(){
-  return  From_D;
-}
-
 
 
 function App() {
