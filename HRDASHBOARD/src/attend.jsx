@@ -2,9 +2,7 @@
 // import * as React from 'react';
 import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import SingleDate from './api'
-//import DateFrom from './api'
+import dayjs from 'dayjs'
 
 import React, { useState } from 'react';
 
@@ -14,39 +12,46 @@ import { avatarClasses } from '@mui/material';
 
 
 
-let From_D=new Date();
-
-export function DateFrom() {
-  const [date, setDate] = useState(new Date());
-  function handleDate(date) { 
-    From_D=date;
-
+export function DateFrom({
+  fromDate,
+  toDate,
+  onFromDateChange,
+  onToDateChange,
+}) {
+  const handleFromChange = (date) => {
+     
+    onFromDateChange(dayjs(date).format('DD/MM/YYYY') )
   }
+  const handleToChange = (date) => {
+    
+    onToDateChange(dayjs(date).format('DD/MM/YYYY') )
+  }
+
   return (
+    <>
     <DatePicker
-      selected={date}
-      onChange={(date) => {
-        setDate(date); // Update the state with the selected date
-        handleDate(date); // Call your custom function with the selected date
-      }}
-    />
+      selected={fromDate}
+      onChange={handleFromChange}
+      />
+    <DatePicker
+      selected={toDate}
+      onChange={handleToChange}
+      />
+      </>
   );
 }
+//
 
 
 
+//
 
-// const From_D = () => {
-//   return 1111
-// };
 
 const data = [
   { id: 0, value: 40, label: 'الحضور' },
   { id: 1, value: 15, label: 'الغياب' },
   { id: 2, value: 20, label: 'المتاخرين' },
 ];
-
-
 
 export function PieActiveArc() {
   return (
@@ -70,13 +75,19 @@ export function PieActiveArc() {
 
 
 function App() {
+  const [fromDate, setFromDate] = useState(new Date())
+  const [toDate, setToDate] = useState(new Date())
+
   return (
     <div >
-      <DateFrom />
-      <Box sx={{ fontWeight: 'bold', fontSize: '25px', textAlign: 'center', color: 'secondary.main' }} >
-        {/* كشف الحضور والانصراف للفترة من {Date1()} و {Date1()}</Box> */}
-      كشف الحضور والانصراف للفترة من   و  {هنا يظهر التاريخ اذا تغيير}  </Box>
+      <DateFrom fromDate={fromDate} f toDate={toDate} onFromDateChange={(value) => setFromDate(value)}
+        onToDateChange={(value) => setToDate(value)}
+      />
 
+      <Box dir="rtl" sx={{ fontWeight: 'bold', fontSize: '25px', textAlign: 'center', color: 'secondary.main' }} >
+      كشف الحضور والانصراف للفترة من {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
+          </Box>
+         
       <Box sx={{ pt: 2 }} />
       <PieActiveArc />
 
