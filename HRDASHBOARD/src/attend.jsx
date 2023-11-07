@@ -1,10 +1,9 @@
-
 // import * as React from 'react';
 import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
 import Box from '@mui/material/Box';
 import dayjs from 'dayjs'
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS file
@@ -85,20 +84,19 @@ export function PieActiveArc( fromDate , toDate) {
       series={[
         {
           data,
-          highlightScope: { faded: 'global', highlighted: 'item' },
+          highlightScope: { faded: "global", highlighted: "item" },
           faded: { innerRadius: 30, additionalRadius: -30 },
         },
       ]}
       sx={{
         [`& .${pieArcClasses.faded}`]: {
-          fill: 'gray',
+          fill: "gray",
         },
       }}
       height={300}
     />
   );
 }
-
 
 function App() {
   const [fromDate, setFromDate] = useState(new Date())
@@ -121,11 +119,9 @@ function App() {
       <PieActiveArc fromDate={fromDate} toDate={toDate} />
 
     </div>
-  )
+  );
 }
 
 export default App;
 
-
-// 
-
+//
