@@ -1,123 +1,78 @@
 // import * as React from 'react';
-import { PieChart, pieArcClasses } from '@mui/x-charts/PieChart';
+import { PieChart, pieArcClasses, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 import Box from '@mui/material/Box';
 import dayjs from 'dayjs'
-
-import React, { useState } from "react";
-
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS file
-
-
-export function DateFrom({
-  fromDate,
-  toDate,
-  onFromDateChange,
-  onToDateChange,
-}) {
-  const handleFromChange = (date) => {
-
-    // onFromDateChange(dayjs(date).format('DD/MM/YYYY'))
-    onFromDateChange(date);
-  }
-  const handleToChange = (date) => {
-
-    // onToDateChange(dayjs(date).format('DD/MM/YYYY'))
-    onToDateChange(date);
-  }
-
-  return (
-
-    <Box sx={{ display: 'flex' }} >
-      <Box p={1} >
-        <label htmlFor="fromDate">من تاريخ :</label>
-        <DatePicker
-          id="fromDate"
-          selected={fromDate}
-          onChange={handleFromChange}
-          dateFormat="dd/MM/yyyy"
-
-        />
-      </Box>
-      <Box p={1}>
-        <label htmlFor="toDate">الى تاريخ:</label>
-        <DatePicker
-          id="toDate"
-          selected={toDate}
-          onChange={handleToChange}
-          dateFormat="dd/MM/yyyy"
-        />
-      </Box>
-    </Box>
-  );
-}
+import { fromDate, toDate } from './signals';
+import PieArcLabel from './chartPieArcLabel'
+import PieChartWithCenterLabel from './chartPieChartWithCenterLabel'
+import { Stack } from '@mui/material';
 //
-
-
-
+import SimpleMediaQuery from './mediaQuery'
 //
-
-
-// const data = [
-//   { id: 0, value: 40, date : '1/1/2022',label: 'الحضور' },
-//   { id: 1, value: 15, label: 'الغياب' },
-//   { id: 2, value: 20, label: 'المتاخرين' },
-// ];
-const data = [
-  { id: 0,date : '01/01/2022', Attend: 40,Absence:20 , Late:10},
-  { id: 1,date : '01/02/2022', Attend: 40,Absence:20 , Late:10},
-  { id: 2,date : '01/03/2022', Attend: 40,Absence:20 , Late:10},
-  { id: 3,date : '01/04/2022', Attend: 40,Absence:20 , Late:10},
-  { id: 4,date : '01/05/2022', Attend: 40,Absence:20 , Late:10},
-  { id: 5,date : '01/11/2023', Attend: 40,Absence:20 , Late:10},
-  { id: 6,date : '07/11/2023', Attend: 60,Absence:40 , Late:20},
-];
-
-export function PieActiveArc( fromDate , toDate) {
-  // const newData = data.filter((item) => item.date <= '07/11/2023' && item.date >= '01/05/2022' );
-  console.log(dayjs(fromDate.value).format('DD/MM/YYYY') );
- 
-  const newData = data.filter((item) => item.date >= dayjs(fromDate.value).format('DD/MM/YYYY') && item.date <= dayjs(toDate.value).format('DD/MM/YYYY') );
-  console.log(newData);
+export function DateFrom() {
+  // console.log(dayjs(fromDate.value).format('DD/MM/YYYY'));
   return (
-    <PieChart
-      series={[
-        {
-          data,
-          highlightScope: { faded: "global", highlighted: "item" },
-          faded: { innerRadius: 30, additionalRadius: -30 },
-        },
-      ]}
-      sx={{
-        [`& .${pieArcClasses.faded}`]: {
-          fill: "gray",
-        },
-      }}
-      height={300}
-    />
+   
+<Box dir='rtl' >
+      <Box sx={{ display: 'flex' }} >
+        <Box p={1} >
+          <Box sx={{ textAlign: 'center', fontWeight: 'bold' }} >
+            <label htmlFor="fromDate">من تاريخ   </label>
+          </Box>
+          <DatePicker
+            id="fromDate"
+            selected={fromDate.value}
+            onChange={(event) => fromDate.value = event}
+            dateFormat="dd/MM/yyyy"
+
+          />
+        </Box>
+        <Box p={1} >
+          <Box sx={{ textAlign: 'center', fontWeight: 'bold' }} >
+            <label htmlFor="toDate"> الى تاريخ  </label>
+          </Box>
+
+          <DatePicker
+            id="toDate"
+            selected={toDate.value}
+            onChange={(event) => toDate.value = event}
+            dateFormat="dd/MM/yyyy"
+          />
+        </Box>
+      </Box>
+     </Box>
+
   );
 }
 
 function App() {
-  const [fromDate, setFromDate] = useState(new Date())
-  const [toDate, setToDate] = useState(new Date())
-
   return (
-    <div>
-      <DateFrom fromDate={fromDate} toDate={toDate} onFromDateChange={(value) => setFromDate(value)}
-        onToDateChange={(value) => setToDate(value)}
-      />
+    <div >
 
-      <br />
-      <br />
-      <br />
-      <Box dir="rtl" sx={{ fontWeight: 'bold', fontSize: '25px', textAlign: 'center', color: 'secondary.main' }} >
-        كشف الحضور والانصراف للفترة من {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
-      </Box>
+      <DateFrom fromDate={fromDate} />
+      <Stack direction={'row'} spacing={2}>
+        <Box  >
+          <br />
+          <Box dir="rtl" sx={{ fontWeight: 'bold', fontSize: '15px', textAlign: 'center', color: 'secondary.main' }} >
+            الحضور والانصراف للفترة من {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
+          </Box>
+          < PieArcLabel  />
+        </Box>
+        <Box >
+          <br />
+          <Box dir="rtl" sx={{ fontWeight: 'bold', fontSize: '15px', textAlign: 'center', color: 'secondary.main' }} >
+            الملتزمين والمتاخرين للفترة {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
+            <br />
+          </Box>
+          <br />
+          <PieChartWithCenterLabel />
+        </Box>
 
-      <Box sx={{ pt: 2 }} />
-      <PieActiveArc fromDate={fromDate} toDate={toDate} />
-
+      </Stack>
+      {/* </Box> */}
+      {/* <SimpleMediaQuery /> */}
     </div>
   );
 }

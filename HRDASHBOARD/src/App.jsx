@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div>
-        <R_StatusFunc />
+        {/* <R_StatusFunc /> */}
         <MiniDrawer />
       </div>
     </>
