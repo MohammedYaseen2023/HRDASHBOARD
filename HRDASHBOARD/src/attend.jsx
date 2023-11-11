@@ -5,17 +5,22 @@ import dayjs from 'dayjs'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS file
 import { fromDate, toDate } from './signals';
-import PieArcLabel from './chartPieArcLabel'
-import PieChartWithCenterLabel from './chartPieChartWithCenterLabel'
 import { Stack } from '@mui/material';
+import Card from "@mui/material/Card";
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 //
 import SimpleMediaQuery from './mediaQuery'
+import R_StatusFunc from './R_Status';
+import TestChart from "./ChartPieAttend";
+
+
 //
 export function DateFrom() {
   // console.log(dayjs(fromDate.value).format('DD/MM/YYYY'));
   return (
-   
-<Box dir='rtl' >
+
+    <Box dir='rtl' >
       <Box sx={{ display: 'flex' }} >
         <Box p={1} >
           <Box sx={{ textAlign: 'center', fontWeight: 'bold' }} >
@@ -42,7 +47,7 @@ export function DateFrom() {
           />
         </Box>
       </Box>
-     </Box>
+    </Box>
 
   );
 }
@@ -53,26 +58,35 @@ function App() {
 
       <DateFrom fromDate={fromDate} />
       <Stack direction={'row'} spacing={2}>
-        <Box  >
-          <br />
-          <Box dir="rtl" sx={{ fontWeight: 'bold', fontSize: '15px', textAlign: 'center', color: 'secondary.main' }} >
-            الحضور والانصراف للفترة من {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
-          </Box>
-          < PieArcLabel  />
+        <Box width={400}>
+          <Card sx={{ minWidth: 275 }} >
+            <CardContent>
+
+              <Typography dir="rtl" sx={{ fontSize: 16 }} color="text.main" gutterBottom>
+                 الحضور والانصراف للفترة من  {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
+              </Typography>
+              <TestChart />
+            </CardContent>
+          </Card>
+
         </Box>
-        <Box >
-          <br />
-          <Box dir="rtl" sx={{ fontWeight: 'bold', fontSize: '15px', textAlign: 'center', color: 'secondary.main' }} >
-            الملتزمين والمتاخرين للفترة {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
-            <br />
-          </Box>
-          <br />
-          <PieChartWithCenterLabel />
+        <Box width={400}>
+          <Card sx={{ minWidth: 275 }} >
+            <CardContent>
+
+              <Typography dir="rtl" sx={{ fontSize: 16 }} color="text.main" gutterBottom>
+                 الحضور والانصراف للفترة من  {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
+              </Typography>
+              <TestChart />
+            </CardContent>
+          </Card>
+
         </Box>
 
       </Stack>
       {/* </Box> */}
       {/* <SimpleMediaQuery /> */}
+      <R_StatusFunc />
     </div>
   );
 }

@@ -2,7 +2,7 @@
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart';
 
 
-const data = [
+const data1 = [
 { id: 0, value: 40,label: 'الحضور' },
   { id: 1, value: 15, label: 'الغياب' },
   { id: 2, value: 20, label: 'المتاخرين' },
@@ -10,7 +10,7 @@ const data = [
 ];
 
 const size = {
-  width: 350,
+  // width: 350,
   height: 300,
 };
 
@@ -21,7 +21,7 @@ export default function PieArcLabel() {
         {
           arcLabel: (item) => `${item.label} (${item.value})`,
           arcLabelMinAngle: 45,
-          data,
+          data: data1,
         },
       ]}
       slotProps={{
@@ -37,7 +37,8 @@ export default function PieArcLabel() {
           fontWeight: 'bold',
         },
       }}
-      {...size}
+      width={400}
+      height={300}
     />
   );
 }
