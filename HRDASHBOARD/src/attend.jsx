@@ -10,9 +10,8 @@ import Card from "@mui/material/Card";
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 //
-import SimpleMediaQuery from './mediaQuery'
 import R_StatusFunc from './R_Status';
-import TestChart from "./ChartPieAttend";
+import {ChartPieAttend,ChartPiePrecision} from "./ChartPieAttend";
 
 
 //
@@ -54,18 +53,18 @@ export function DateFrom() {
 
 function App() {
   return (
-    <div >
+    <div dir="rtl" spacing={3}>
 
       <DateFrom fromDate={fromDate} />
-      <Stack direction={'row'} spacing={2}>
-        <Box width={400}>
+      <Stack direction={'row'}  >
+        <Box width={400} >
           <Card sx={{ minWidth: 275 }} >
-            <CardContent>
+            <CardContent >
 
-              <Typography dir="rtl" sx={{ fontSize: 16 }} color="text.main" gutterBottom>
+              <Typography dir="rtl" sx={{ fontSize: 15 ,bgcolor :"#e3f2fd",borderRadius:"8px"}} color="text.primary" gutterBottom>
                  الحضور والانصراف للفترة من  {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
               </Typography>
-              <TestChart />
+              <ChartPiePrecision />
             </CardContent>
           </Card>
 
@@ -74,10 +73,10 @@ function App() {
           <Card sx={{ minWidth: 275 }} >
             <CardContent>
 
-              <Typography dir="rtl" sx={{ fontSize: 16 }} color="text.main" gutterBottom>
+              <Typography dir="rtl" sx={{ fontSize: 15 ,bgcolor :"#e3f2fd",borderRadius:"8px" }} color="text.primary" gutterBottom>
                  الحضور والانصراف للفترة من  {dayjs(fromDate).format('DD/MM/YYYY')} و {dayjs(toDate).format('DD/MM/YYYY')}
               </Typography>
-              <TestChart />
+              <ChartPieAttend />
             </CardContent>
           </Card>
 

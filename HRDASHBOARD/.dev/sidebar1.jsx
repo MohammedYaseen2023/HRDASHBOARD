@@ -18,7 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import VillaIcon from '@mui/icons-material/Villa';
 
-import Attend from './attend'
+import Attend from '../src/attend'
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({

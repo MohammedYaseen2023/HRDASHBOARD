@@ -16,8 +16,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import VillaIcon from '@mui/icons-material/Villa';
 
 
@@ -109,10 +107,10 @@ export default function PersistentDrawerRight() {
       </AppBar>
       <Main open={open}>
         <DrawerHeader />
-        <Attend/>
+        <Attend />
       </Main>
       <Drawer
-        sx={{
+        sx={{ 
           width: drawerWidth,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
