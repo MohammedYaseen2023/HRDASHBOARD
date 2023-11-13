@@ -10,7 +10,7 @@ function App() {
       
 
       {/* <R_StatusFunc /> */}
-      <MiniDrawer />
+      {/* <MiniDrawer /> */}
     </div>
   );
 }
