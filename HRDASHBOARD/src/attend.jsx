@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import dayjs from 'dayjs'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS file
-import { fromDate, toDate } from './signals';
+import { fromDate, toDate } from './Signals';
 import { Stack } from '@mui/material';
 import Card from "@mui/material/Card";
 import CardContent from '@mui/material/CardContent';

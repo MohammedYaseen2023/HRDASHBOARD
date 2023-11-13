@@ -3,10 +3,17 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ElderlySharpIcon from '@mui/icons-material/ElderlySharp';
-import { pink } from '@mui/material/colors';
+import ElderlyIcon from '@mui/icons-material/Elderly';
+import DirectionsRunIcon from '@mui/icons-material/DirectionsRun';
+import AccessAlarmsIcon from '@mui/icons-material/AccessAlarms';
+import { pink, green } from '@mui/material/colors';
+import { AttendCount } from './signals';
+import { Grid, Stack } from '@mui/material';
+ function AttendCountFunction() {
+  AttendCount.value = 19;
+  return AttendCount
+}
 // const bull = (
 //   <Box
 //     component="span"
@@ -16,35 +23,90 @@ import { pink } from '@mui/material/colors';
 //   </Box>
 // );
 
-const card = (
+const CardAttend = (
   <React.Fragment>
-    <CardContent>
-     <ElderlySharpIcon sx={{ color: pink[500] }} />
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-        Word of the Day
-      </Typography>
-      <Typography variant="h5" component="div">
-        {/* be{bull}nev{bull}o{bull}lent */}
-      </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        adjective
-      </Typography>
-      <Typography variant="body2">
-        well meaning and kindly.
-        <br />
-        {'"a benevolent smile"'}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions>
+
+      <CardContent>
+              <ElderlyIcon sx={{ color: green[700], fontSize: 30 }} />
+        <Typography sx={{ fontSize: 18 }} color="text.main" gutterBottom>
+          Attendance
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {AttendCountFunction()}
+        </Typography>
+      </CardContent>
+  </React.Fragment>
+);
+
+
+
+const CardLate = (
+  <React.Fragment>
+      <CardContent>
+        
+        <AccessAlarmsIcon sx={{ color: pink[700], fontSize: 30 }} />
+        <Typography sx={{ fontSize: 18 }} color="text.main" gutterBottom>
+          Late
+        </Typography>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {AttendCountFunction()}
+        </Typography>
+      </CardContent>
   </React.Fragment>
 );
 
 export default function OutlinedCard() {
   return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
+
+    <Box sx={{ minWidth: 275 }} >
+          <Box  >
+          <Typography sx={{ fontSize: 24 }} color="text.primary" gutterBottom>
+          Employee Attend
+        </Typography>
+    </Box>
+      <Grid container spacing={2} >
+        <Grid item xs={12} sm={3} >
+        <Card variant="outlined">{CardAttend}</Card>
+        </Grid>
+
+        <Grid item xs={12} sm={3}>
+        <Card variant="outlined">{CardLate}</Card> 
+        </Grid>
+
+      </Grid>
+
+      <Grid container spacing={2} mt={1}>
+        <Grid item xs={12} sm={3} >
+        <Card variant="outlined">{CardAttend}</Card>
+        </Grid>
+
+        <Grid item xs={12} sm={3}>
+        <Card variant="outlined">{CardLate}</Card> 
+        </Grid>
+
+      </Grid>
     </Box>
   );
 }
+
+// working card
+// const card = (
+//   <React.Fragment>
+   
+//       <CardContent>
+//         <Typography sx={{ fontSize: 24 }} color="text.primary" gutterBottom>
+//           Employee Attend
+//         </Typography>
+//         <ElderlySharpIcon sx={{ color: green[700], fontSize: 30 }} />
+//         <Typography sx={{ fontSize: 18 }} color="text.main" gutterBottom>
+//           Attendance
+//         </Typography>
+//         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+//           {AttendCountFunction()}
+//         </Typography>
+//       </CardContent>
+//       <CardActions>
+//       </CardActions>
+
+//   </React.Fragment>
+// );

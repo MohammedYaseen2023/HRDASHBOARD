@@ -7,7 +7,7 @@ export const fromDate = signal(new Date());
 export const toDate = signal(new Date());
 export const fromToDate = computed(() => `${fromDate.value} ${toDate.value}`);
 export const AttendData = signal();
-
+export const  AttendCount =signal();
 export const globalData = signal({
     
 })
