@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import dayjs from 'dayjs'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'; // Import the CSS file
-import { fromDate, toDate } from './Signals';
+import { FromDate, ToDate } from './Signals';
 import { Stack } from '@mui/material';
 import Card from "@mui/material/Card";
 import CardContent from '@mui/material/CardContent';
@@ -27,8 +27,8 @@ export function DateFrom() {
           </Box>
           <DatePicker
             id="fromDate"
-            selected={fromDate.value}
-            onChange={(event) => fromDate.value = event}
+            selected={FromDate.value}
+            onChange={(event) => FromDate.value = event}
             dateFormat="dd/MM/yyyy"
 
           />
@@ -40,8 +40,8 @@ export function DateFrom() {
 
           <DatePicker
             id="toDate"
-            selected={toDate.value}
-            onChange={(event) => toDate.value = event}
+            selected={ToDate.value}
+            onChange={(event) => ToDate.value = event}
             dateFormat="dd/MM/yyyy"
           />
         </Box>

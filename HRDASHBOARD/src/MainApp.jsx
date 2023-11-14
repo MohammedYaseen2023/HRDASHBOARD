@@ -1,4 +1,4 @@
-import * as React from 'react';
+import   React, { useState }  from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
@@ -12,22 +12,19 @@ import PersonOffIcon from '@mui/icons-material/PersonOff';
 import NotInterestedIcon from '@mui/icons-material/NotInterested';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { pink, green,blue,deepPurple } from '@mui/material/colors';
-import { AttendCount } from './signals';
+//import { AttendCount } from './Signals';
 import { Grid, Stack } from '@mui/material';
 import {ChartPieAttend,ChartPiePrecision} from "./ChartPieAttend";
+import MyDatePicker from './DatePickerTest'
 
- function AttendCountFunction() {
-  AttendCount.value = 19;
-  return AttendCount
-}
-// const bull = (
-//   <Box
-//     component="span"
-//     sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-//   >
-//     •
-//   </Box>
-// );
+//  function AttendCountFunction() {
+//   // AttendCount.value = 19;
+//   alert (AttendCount.value);
+//   return AttendCount
+// }
+
+import {AttendCount,LateCount,AbsenceCount} from './Signals';
+
 
 const CardAttend = (
   <React.Fragment>
@@ -38,7 +35,7 @@ const CardAttend = (
           Attendance
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {AttendCountFunction()}
+          {AttendCount }
         </Typography>
       </CardContent>
   </React.Fragment>
@@ -55,7 +52,7 @@ const CardLate = (
           Late
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {AttendCountFunction()}
+          {LateCount}
         </Typography>
       </CardContent>
   </React.Fragment>
@@ -70,7 +67,7 @@ const CardAbscence = (
           Abscence
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {AttendCountFunction()}
+          {AbsenceCount}
         </Typography>
       </CardContent>
   </React.Fragment>
@@ -85,7 +82,7 @@ const CardAbscence1 = (
           Abscence
         </Typography>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {AttendCountFunction()}
+          {/* {AttendCountFunction()} */}
         </Typography>
       </CardContent>
   </React.Fragment>
@@ -120,9 +117,11 @@ export default function OutlinedCard() {
   return (
 
     <Box sx={{ minWidth: 275 }} mt={1}>
-         
-       
-    <Grid container spacing={2} padding={1}  >
+     
+       <Card > 
+       <MyDatePicker/>  
+        </Card> 
+        <Grid container spacing={2} padding={1}  >
     <Grid item xs={12} sm={6}  >
     
      <Card variant="outlined">{CardMainEmployee}
