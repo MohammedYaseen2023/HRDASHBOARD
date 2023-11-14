@@ -2,44 +2,10 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
 
+function ChartPieAttend() {
 
-// export default function TestChart() {
-//     const state = {
-//         options: {
-//             chart: {
-//                 id: "basic-bar"
-//             },
-//             xaxis: {
-//                 categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
-//             }
-//         },
-//         series: [
-//             {
-//                 name: "series-1",
-//                 data: [30, 40, 45, 50, 49, 60, 70, 91]
-//             }
-//         ]
-//     };
-
-
-//     return (<div className="app">
-//         <div className="row">
-//             <div className="mixed-chart">
-//                 <Chart
-//                     options={state.options}
-//                     series={state.series}
-//                     type="bar"
-//                     width="500"
-//                 />
-//             </div>
-//         </div>
-//     </div>)
-// };
-
-    function ChartPieAttend() {
-
-const seriesData=[60,35, 5, 20]
-const lablesData=['الموظفين','الحضور', 'الغياب', 'المتأخرين']
+    const seriesData = [60, 35, 5, 20]
+    const lablesData = ['الموظفين', 'الحضور', 'الغياب', 'المتأخرين']
     const state = {
 
         series: seriesData,//[44, 55, 41, 17, 15],
@@ -47,12 +13,12 @@ const lablesData=['الموظفين','الحضور', 'الغياب', 'المتأ
             labels: lablesData,
             chart: {
                 type: 'donut',
-            } ,
+            },
             responsive: [{
                 breakpoint: 480,
                 options: {
                     chart: {
-                    width: 200
+                        width: 200
                     },
                     legend: {
                         direction: 'row',
@@ -72,43 +38,43 @@ const lablesData=['الموظفين','الحضور', 'الغياب', 'المتأ
 
 }
 
- 
 
-    function ChartPiePrecision() {
-     
-    const seriesData=[60,55, 20, 35]
-    const lablesData=['الموظفين','الحضور', 'المتاخرين', 'الملتزمين']
-        const state = {
-    
-            series: seriesData,//[44, 55, 41, 17, 15],
-            options: {
-                labels: lablesData,
-                chart: {
-                    type: 'pie',
-                } ,
-                responsive: [{
-                    breakpoint: 480,
-                    options: {
-                        chart: {
-                        width: 200
-                        },
-                        legend: {
-                            direction: 'row',
-                            position: { vertical: 'bottom', horizontal: 'middle' },
-    
-                        }
-                    }
-                }]
+
+function ChartPiePrecision() {
+
+    const seriesData = [60, 55, 20, 35]
+    const lablesData = ['الموظفين', 'الحضور', 'المتاخرين', 'الملتزمين']
+    const state = {
+
+        series: seriesData,//[44, 55, 41, 17, 15],
+        options: {
+            labels: lablesData,
+            chart: {
+                type: 'pie',
             },
-        };
-    
-        return (
-            <div id="chart">
-                <ReactApexChart options={state.options} series={state.series} type="pie" />
-            </div>
-        );
-    
-    }
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        direction: 'row',
+                        position: { vertical: 'bottom', horizontal: 'middle' },
+
+                    }
+                }
+            }]
+        },
+    };
+
+    return (
+        <div id="chart">
+            <ReactApexChart options={state.options} series={state.series} type="pie" />
+        </div>
+    );
+
+}
 
 
-export   {ChartPieAttend,ChartPiePrecision};
+ export { ChartPieAttend, ChartPiePrecision };
