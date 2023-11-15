@@ -2,9 +2,12 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
 
-function ChartPieAttend() {
+import { AttendCount, LateCount, AbsenceCount } from "./Signals";
 
-    const seriesData = [60, 35, 5, 20]
+function ChartPieAttend() {
+   // console.log(parseInt(AttendCount));
+const aa =60;
+    const seriesData = [aa, 35, 5,  20 ]
     const lablesData = ['الموظفين', 'الحضور', 'الغياب', 'المتأخرين']
     const state = {
 
@@ -42,8 +45,9 @@ function ChartPieAttend() {
 
 function ChartPiePrecision() {
 
-    const seriesData = [60, 55, 20, 35]
-    const lablesData = ['الموظفين', 'الحضور', 'المتاخرين', 'الملتزمين']
+    //const seriesData = [ 55, 20, 35]
+    const seriesData = [ 55, 20, 35]
+    const lablesData = ['الحضور', 'المتاخرين', 'الملتزمين']
     const state = {
 
         series: seriesData,//[44, 55, 41, 17, 15],

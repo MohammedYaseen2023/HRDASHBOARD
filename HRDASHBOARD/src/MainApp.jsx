@@ -24,6 +24,10 @@ import MyDatePicker from "./DatePickerTest";
 // }
 
 import { AttendCount, LateCount, AbsenceCount } from "./Signals";
+ //import GetAttendData from './ApiData'
+ //GetAttendData();
+import AppTestApi from './ApiTest'
+
 
 const CardAttend = (
   <React.Fragment>
@@ -104,6 +108,8 @@ const CardTotalEmployee = (
 export default function OutlinedCard() {
   return (
     <Box sx={{ minWidth: 275 }} mt={1}>
+<AppTestApi/>
+
       <Card>
         <MyDatePicker />
       </Card>
